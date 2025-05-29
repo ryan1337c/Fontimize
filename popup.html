@@ -1,0 +1,53 @@
+<link href="popup.css" rel="stylesheet" type="text/css" />
+<script type="module" src="popup.js"></script>
+<div class="container">
+    <div class="header">
+        <div class="title">Helper Extension</div>
+        <img alt="Set Icon" class="profile" id="profile"></img>
+        <div class="edit" id="edit">edit</div>
+    </div>
+    <div class="profileSelection" id="profileSelection">
+        <h1 class="selectTitle">Select Icon</h1>
+        <div class="pfpContainer" id="pfpContainer">
+        </div>
+        <button class="savePfpBtn" id="savePfpBtn">Save</button>
+    </div>
+    <div class="fontDropdown" id="fontDropdown">
+        <h2>Select Font:</h2>
+        <div class="fontDropdown-toggle" >None</div>
+        <div class="fontDropdown-menu">
+            <div class="fontDropdown-item" >None</div>
+            <div class="fontDropdown-item" >Ariel</div>
+            <div class="fontDropdown-item" >Courier New</div>
+            <div class="fontDropdown-item" >Verdana</div>
+        </div>
+    </div>
+    <div>
+        <div class="sub-title" style="display: flex; flex-direction: row; justify-content: flex-start; gap: 0.5rem;"><h2>Font Size:</h2>
+            <h2 id="fontSizeTitle">16px</h2>
+        </div>
+        <input type="range" min="10" max="32" class="slider" id="sizeRange">
+    </div>
+    <div>
+        <div class="sub-title" style="display: flex; flex-direction: row; justify-content: flex-start; gap: 0.5rem;">
+            <h2>Letter Spacing:</h2>
+            <h2 id="letterSpacing">0px</h2>
+        </div>
+        <input type="range" class="slider" min="0" max="5" step='0.1' value='0' id="letterSpacingRange">
+    </div>
+    <div>
+        <div class="sub-title"><h2>Highlight Colors</h2></div>
+        <div style="display: flex; flex-direction: row; justify-content: space-evenly; padding-top: 2rem;">
+            <span class="dot" style="background-color: gold"></span>
+            <span class="dot" style="background-color: lightblue; outline: lightgray;"></span>
+            <span class="dot" style="background-color: lightgreen; outline: lightgray;"></span>
+            <span class="dot" style="background-color: lightpink; outline: lightgray;"></span>
+            <span class="dot" style="background-color: lightseagreen; outline: lightgray;"></span>
+        </div>
+    </div>
+    <div class="btn-container">
+        <button id="saveBtn" class="save-btn">Save</button>
+        <button id="resetBtn" class="save-btn">Reset</button>
+    </div>
+
+</div>

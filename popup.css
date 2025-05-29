@@ -1,0 +1,237 @@
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Font family variable */
+:root {
+    --main-font: 'Arial, sans-serif'; /* use to change font on webpage */
+    --main-fontSize: 16px; /* use to change font size on webpage */
+    --letter-spacing:normal;
+    font-family: Arial, Helvetica, sans-serif; /* Font for popup */
+}
+html, body {
+    overflow: hidden; /* prevent body scroll */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    max-width: 100%;
+    padding: 16px; 
+    height: 500px;
+    justify-content: space-evenly;
+    position: relative; 
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.profile {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border: 0.5px solid black;
+    border-radius: 50%;
+    position:absolute;
+    right: 0;
+}
+
+.edit {
+    pointer-events: none;
+    display: none;
+}
+
+.edit.selected {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: gray;
+    border: 0.5px solid black;
+    border-radius: 50%;
+    position:absolute;
+    right: 0;
+    opacity: 0.8;
+
+    /* Center the text */
+    display: flex;
+    align-items: center;   /* vertical */
+    justify-content: center; /* horizontal */
+    font-size: 14px; /* Optional: control text size */
+    color: white;    /* Optional: make text stand out */
+}
+
+.profileSelection {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 95%;
+    background-color: white;
+    border-top: 1px solid black;
+
+    /* Hide initially: slide down (translateY(100%)) and invisible */
+    transform: translateY(100%);
+    opacity: 0;
+
+    /* Set up transition */
+    transition: transform 0.4s ease, opacity 0.4s ease;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    z-index: 1000;
+    pointer-events: none; /* Prevent interaction when hidden */
+}
+
+.profileSelection.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto; /* Enable interaction */
+}
+
+.selectTitle{
+    align-self: center;
+    margin: 0 0 20px 0;
+}
+
+.pfpContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+    gap: 16px; 
+  width: 100%;
+}
+
+.pfp{
+  width: 70px;  
+  height: 70px;
+  border: 0 solid black;
+  border-radius: 50%;
+    justify-self: center; 
+  align-self: center;   
+}
+
+.pfp.selected {
+    outline: 5px solid rgb(44, 44, 44);
+}
+
+.savePfpBtn{
+    margin-top: auto;
+        padding: 10px 0 10px 0;
+    width: 40%;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgba(231, 231, 236, 0.479);
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+
+.save-btn {
+    padding: 10px 0 10px 0;
+    width: 40%;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgba(231, 231, 236, 0.479);
+}
+
+.save-btn:hover {
+    background-color: rgba(231, 231, 236, 1);
+    cursor: pointer;
+}
+
+.fontDropdown {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+}
+
+.fontDropdown-toggle {
+    /* border: solid, black; */
+    padding: 10px;
+    margin: 10px 0 0 10px;
+    cursor: pointer;
+    border: 1px solid black;
+    width: 100%;
+}
+
+.fontDropdown-menu {
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: white;
+    margin-left: 10px;
+}
+
+
+.fontDropdown-item {
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid black;
+    margin-top: -1px; /* shift up by 1px to overlap borders */
+}
+
+.fontDropdown-item:hover {
+    background-color:lightgray;
+}
+
+.fontDropdown.open .fontDropdown-menu {
+  display: block;
+}
+
+.fontDropdown.open .fontDropdown-item.selected {
+    background-color: lightgrey;
+}
+
+.slider{
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot:hover{
+    outline: 0.5px solid black;
+}
+
+
+
+
+
+
+
