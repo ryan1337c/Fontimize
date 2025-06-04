@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Fontify",
-  "description": "A all in one tool used to enhance online reading experience",
+  "name": "Fontimize",
+  "description": "An all-in-one tool used to enhance the online reading experience.",
   "version": "1.0",
   "permissions": ["tabs", "storage", "contextMenus", "scripting"],
   "host_permissions": ["<all_urls>"],
