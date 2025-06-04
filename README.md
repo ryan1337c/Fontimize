@@ -5,6 +5,6 @@ This extension allows users to customize the font styles of any website to their
 ## Getting Started
 
 1. Download the folder
-2. Go to "Manage Extension" on Chrome and click "Load Unpacked"
-3. Upload the folder
+2. Open the browser's settings, locate the extensions section, and then select "Manage extensions"
+3. Select "Load Unpacked" and upload the folder
 4. Now head over to any webpage and open the extension!
