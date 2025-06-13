@@ -45,25 +45,6 @@ if (!isDev) {
   `;
       document.head.appendChild(style);
     }
-    // } else {
-    //   const existing = document.getElementById("universal-dark-mode");
-    //   if (existing) {
-    //     existing.remove();
-    //   }
-    //   style.id = "universal-dark-mode";
-    //   style.textContent = `
-    //   html, body, div, span, p, a, h1, h2, h3, h4, h5, h6,
-    //   section, article, header, footer, main, nav, aside,
-    //   li, ul, ol, table, tr, td, th, form, label, input, textarea, select, button {
-    //     background-color: #ffffff !important;  /* light background */
-    //     color: #222222 !important;             /* dark text */
-    //     border-color: #ccc !important;         /* light gray border */
-    //   }
-    //   a {
-    //     color: #0066cc !important;              /* blue links */
-    //   }
-    // `;
-    // }
   };
 
   // Method to reset webpage back to original style

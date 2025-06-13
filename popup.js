@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           "Error saving inital IconData to storage:",
           chrome.runtime.lastError
         );
+        alert("Unable to save your data. Storage may be full or restricted.");
       } else {
         console.log("Inital IconData successfully saved!");
       }
@@ -217,6 +218,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             "Error saving IconData to storage:",
             chrome.runtime.lastError
           );
+          alert("Unable to save your data. Storage may be full or restricted.");
         } else {
           console.log("IconData successfully saved!");
         }
@@ -443,7 +445,17 @@ document.addEventListener("DOMContentLoaded", async () => {
       dataObject.currentColorIndex = currentColorIndex;
 
       // Save to chrome.storage.local
-      chrome.storage.local.set({ [hostName]: dataObject });
+      chrome.storage.local.set({ [hostName]: dataObject }, () => {
+        if (chrome.runtime.lastError) {
+          console.error(
+            "Error saving web data to storage.",
+            chrome.runtime.lastError
+          );
+          alert("Unable to save your data. Storage may be full or restricted.");
+        } else {
+          console.log("Web data successfully saved.");
+        }
+      });
     });
 
     // Reset btn functionality
