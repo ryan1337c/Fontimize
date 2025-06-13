@@ -1,8 +1,17 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="popup.css" rel="stylesheet" type="text/css" />
 <script type="module" src="popup.js"></script>
 <div class="container">
     <div class="header">
-        <div class="title">Helper Extension</div>
+        <div class="colormodes">
+            <input type="checkbox" class="checkbox" id="checkbox">
+            <label for="checkbox" class="label">
+                <i class="fas fa-moon fa-lg" id="moon"></i>
+                <i class="fas fa-sun fa-lg" id="sun"></i>
+                <div class="ball"></div>
+            </label>
+        </div>
+        <div class="title">Fontimize</div>
         <img alt="Set Icon" class="profile" id="profile"></img>
         <div class="edit" id="edit">edit</div>
     </div>

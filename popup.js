@@ -152,6 +152,27 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   function initializePopup(currentTabId, dataObject) {
+    // Color mode
+    const chk = document.getElementById("checkbox");
+    const moon = document.getElementById("moon");
+    const sun = document.getElementById("sun");
+    chk.addEventListener("change", () => {
+      chk.classList.toggle("dark");
+      // animations injection
+      if (chk.classList.contains("dark")) {
+        sun.classList.remove("animate");
+        moon.classList.add("animate");
+      } else {
+        moon.classList.remove("animate");
+        sun.classList.add("animate");
+      }
+      // Send message to content.js to change color modes
+      chrome.tabs.sendMessage(currentTabId, {
+        type: "changeColorMode",
+        value: chk.classList.contains("dark") ? "dark" : "light",
+      });
+    });
+
     // User Profile functionality
     const profile = document.getElementById("profile");
     const profileSelection = document.getElementById("profileSelection");

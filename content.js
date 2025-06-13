@@ -16,10 +16,55 @@ if (!isDev) {
       getFontStyles(sendResponse);
     } else if (message.type === "changeLetterSpacing") {
       changeLetterSpace(message.value);
+    } else if (message.type === "changeColorMode") {
+      changeColorMode(message.value);
     } else if (message.type === "reset") {
       resetAll();
     }
   });
+
+  // Method to change color mode
+  const changeColorMode = (value) => {
+    const existing = document.getElementById("universal-dark-mode");
+    if (existing) {
+      existing.remove();
+    } else {
+      const style = document.createElement("style");
+      style.id = "universal-dark-mode";
+      style.textContent = `
+    html, body, div, span, p, a, h1, h2, h3, h4, h5, h6,
+    section, article, header, footer, main, nav, aside,
+    li, ul, ol, table, tr, td, th, form, label, input, textarea, select, button {
+      background-color: #121212 !important;
+      color: #e0e0e0 !important;
+      border-color: #333 !important;
+    }
+    a {
+      color: #80cbc4 !important;
+    }
+  `;
+      document.head.appendChild(style);
+    }
+    // } else {
+    //   const existing = document.getElementById("universal-dark-mode");
+    //   if (existing) {
+    //     existing.remove();
+    //   }
+    //   style.id = "universal-dark-mode";
+    //   style.textContent = `
+    //   html, body, div, span, p, a, h1, h2, h3, h4, h5, h6,
+    //   section, article, header, footer, main, nav, aside,
+    //   li, ul, ol, table, tr, td, th, form, label, input, textarea, select, button {
+    //     background-color: #ffffff !important;  /* light background */
+    //     color: #222222 !important;             /* dark text */
+    //     border-color: #ccc !important;         /* light gray border */
+    //   }
+    //   a {
+    //     color: #0066cc !important;              /* blue links */
+    //   }
+    // `;
+    // }
+  };
 
   // Method to reset webpage back to original style
   const resetAll = () => {

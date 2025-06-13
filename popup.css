@@ -229,6 +229,71 @@ html, body {
     outline: 0.5px solid black;
 }
 
+.colormodes {
+    position: absolute;
+    left: 0;
+}
+.label{
+    background-color: #111;
+    display: flex;
+    border-radius: 50px;
+    width: 60px;
+    height: 30px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px;
+    position:relative;
+}
+
+.fa-moon{
+    color: #cdcdcd;
+}
+
+.fa-moon.animate {
+    animation: rotate 0.5s linear;
+}
+
+.fa-sun{
+    color:#f39c12;
+}
+
+.fa-sun.animate {
+       animation: rotate 0.5s linear;
+    --fa-animation-direction: reverse; 
+}
+
+@keyframes rotate {
+    0% {transform: rotateX(0deg)}
+    25% {transform: rotateX(45deg)}
+    50%{transform: rotateX(90deg)}
+    75%{transform: rotateX(45deg)}
+    100%{transform: rotateX(0deg)}
+}
+
+.checkbox{
+    opacity: 0;
+    position:absolute;
+}
+
+.ball {
+    width: 27px;
+    height: 26px;
+    top: 2px;
+    left: 2px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute;
+    transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .label .ball {
+    transform: translateX(29px);
+}
+
+/* .checkbox:checked + .label {
+    background: #111;
+} */
+
 
 
 
