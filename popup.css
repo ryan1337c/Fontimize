@@ -153,11 +153,29 @@ html, body {
     width: 40%;
     border: 1px solid black;
     border-radius: 10px;
-    background-color: rgba(231, 231, 236, 0.479);
+    /* background-color: rgba(231, 231, 236, 0.479); */
+    background-color: rgba(0, 128, 0, 0.651);
+    font-weight: bold;
+    color: white;
 }
 
 .save-btn:hover {
-    background-color: rgba(231, 231, 236, 1);
+    background-color: rgba(0, 128, 0, 0.555);
+    cursor: pointer;
+}
+
+.reset-btn {
+    padding: 10px 0 10px 0;
+    width: 40%;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgba(255, 0, 0, 0.678);
+    font-weight: bold;
+    color: white;
+}
+
+.reset-btn:hover {
+    background-color: rgba(255, 0, 0, 0.596);
     cursor: pointer;
 }
 
