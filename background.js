@@ -155,6 +155,8 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
                 span.style.backgroundColor = color;
                 span.id = "helperExtension";
 
+                if (nodeRange.toString().trim().length === 0) return;
+
                 try {
                   nodeRange.surroundContents(span);
                 } catch (e) {
@@ -219,11 +221,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
           textNodes.forEach((textNode, index) => {
             const parent = textNode.parentNode;
 
-            if (
-              parent.nodeName === "SPAN" &&
-              parent.id === "helperExtension" &&
-              parent.style.backgroundColor
-            ) {
+            if (parent.nodeName === "SPAN" && parent.id === "helperExtension") {
               const isFirst = index === 0;
               const isLast = index === textNodes.length - 1;
 
@@ -274,13 +272,6 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
       },
     });
   }
-
-  // Clean up any empty spans
-  document.querySelectorAll("span#helperExtension").forEach((span) => {
-    if (span.textContent.trim() === "") {
-      span.remove();
-    }
-  });
 });
 
 chrome.runtime.onMessage.addListener((message, sender, response) => {
