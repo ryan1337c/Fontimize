@@ -78,31 +78,91 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
             }
 
             textNodes.forEach((textNode, index) => {
-              const nodeRange = document.createRange();
+              const parent = textNode.parentNode;
+              if (
+                parent.nodeName === "SPAN" &&
+                parent.id === "helperExtension" &&
+                parent.style.backgroundColor
+              ) {
+                const isFirst = index === 0;
+                const isLast = index === textNodes.length - 1;
 
-              // Determining node range
-              if (index === 0) {
-                nodeRange.setStart(textNode, range.startOffset);
+                // Determine start and end offsets
+                const startOffset = isFirst ? range.startOffset : 0;
+                const endOffset = isLast ? range.endOffset : textNode.length;
+
+                const fullText = textNode.textContent;
+
+                // Split the text into before, unwrapped, and after parts
+                const beforeText = fullText.slice(0, startOffset);
+                const selectedText = fullText.slice(startOffset, endOffset);
+                const afterText = fullText.slice(endOffset);
+
+                const fragment = document.createDocumentFragment();
+
+                // Create a new span for "before" part (if any)
+                if (beforeText.length > 0) {
+                  const beforeSpan = document.createElement("span");
+                  beforeSpan.style.backgroundColor =
+                    parent.style.backgroundColor;
+                  beforeSpan.textContent = beforeText;
+                  beforeSpan.id = "helperExtension";
+                  fragment.appendChild(beforeSpan);
+                }
+
+                // Add highglights to selected text
+                if (selectedText.length > 0) {
+                  const selectedSpan = document.createElement("span");
+                  selectedSpan.style.backgroundColor = color;
+                  selectedSpan.textContent = selectedText;
+                  selectedSpan.id = "helperExtension";
+                  fragment.appendChild(selectedSpan);
+                }
+
+                // Create a new span for "after" part (if any)
+                if (afterText.length > 0) {
+                  const afterSpan = document.createElement("span");
+                  afterSpan.style.backgroundColor =
+                    parent.style.backgroundColor;
+                  afterSpan.textContent = afterText;
+                  afterSpan.id = "helperExtension";
+                  fragment.appendChild(afterSpan);
+                }
+
+                if (fragment.childNodes.length > 0) {
+                  parent.replaceWith(fragment);
+                }
+
+                // replace original span with new fragment
+                parent.replaceWith(fragment);
               } else {
-                nodeRange.setStart(textNode, 0);
-              }
+                const nodeRange = document.createRange();
+                // Determining node range
+                if (index === 0) {
+                  nodeRange.setStart(textNode, range.startOffset);
+                } else {
+                  nodeRange.setStart(textNode, 0);
+                }
 
-              if (index === textNodes.length - 1) {
-                nodeRange.setEnd(textNode, range.endOffset);
-              } else {
-                nodeRange.setEnd(textNode, textNode.length);
-              }
+                if (index === textNodes.length - 1) {
+                  nodeRange.setEnd(textNode, range.endOffset);
+                } else {
+                  nodeRange.setEnd(textNode, textNode.length);
+                }
 
-              // Surround the range with a span
-              const span = document.createElement("span");
-              span.style.backgroundColor = color;
-              span.id = "helperExtension";
+                // Surround the range with a span
+                const span = document.createElement("span");
+                span.style.backgroundColor = color;
+                span.id = "helperExtension";
 
-              try {
-                nodeRange.surroundContents(span);
-              } catch (e) {
-                console.warn("Cannot surround contents:", e);
+                try {
+                  nodeRange.surroundContents(span);
+                } catch (e) {
+                  console.warn("Cannot surround contents:", e);
+                }
               }
+              // Clear the selection so it disappears
+              window.getSelection().removeAllRanges();
             });
           }
         }
@@ -214,6 +274,13 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
       },
     });
   }
+
+  // Clean up any empty spans
+  document.querySelectorAll("span#helperExtension").forEach((span) => {
+    if (span.textContent.trim() === "") {
+      span.remove();
+    }
+  });
 });
 
 chrome.runtime.onMessage.addListener((message, sender, response) => {
