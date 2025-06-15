@@ -42,6 +42,14 @@ if (!isDev) {
     a {
       color: #80cbc4 !important;
     }
+      img, svg, path, [class*="icon"], use {
+        filter: none !important;
+        color: unset !important;
+        fill: unset !important;
+        stroke: unset !important;
+        background-color: transparent !important;
+      }
+}
   `;
       document.head.appendChild(style);
     }
