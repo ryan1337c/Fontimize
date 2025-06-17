@@ -103,7 +103,12 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
               // Create a new span for "before" part (if any)
               if (beforeText.length > 0) {
                 const beforeSpan = document.createElement("span");
-                beforeSpan.style.backgroundColor = parent.style.backgroundColor;
+                beforeSpan.style.setProperty(
+                  "background-color",
+                  parent.style.backgroundColor,
+                  "important"
+                );
+                beforeSpan.style.setProperty("color", "black", "important");
                 beforeSpan.textContent = beforeText;
                 beforeSpan.id = "helperExtension";
                 fragment.appendChild(beforeSpan);
@@ -112,7 +117,12 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
               // Add highglights to selected text
               if (selectedText.length > 0) {
                 const selectedSpan = document.createElement("span");
-                selectedSpan.style.backgroundColor = color;
+                selectedSpan.style.setProperty(
+                  "background-color",
+                  color,
+                  "important"
+                );
+                selectedSpan.style.setProperty("color", "black", "important");
                 selectedSpan.textContent = selectedText;
                 selectedSpan.id = "helperExtension";
                 fragment.appendChild(selectedSpan);
@@ -122,6 +132,12 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
               if (afterText.length > 0) {
                 const afterSpan = document.createElement("span");
                 afterSpan.style.backgroundColor = parent.style.backgroundColor;
+                afterSpan.style.setProperty(
+                  "background-color",
+                  parent.style.backgroundColor,
+                  "important"
+                );
+                afterSpan.style.setProperty("color", "black", "important");
                 afterSpan.textContent = afterText;
                 afterSpan.id = "helperExtension";
                 fragment.appendChild(afterSpan);
@@ -147,6 +163,8 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
               // Surround the range with a span
               const span = document.createElement("span");
               span.style.backgroundColor = color;
+              span.style.setProperty("background-color", color, "important");
+              span.style.setProperty("color", "black", "important");
               span.id = "helperExtension";
 
               if (nodeRange.toString().trim().length === 0) return;
@@ -187,7 +205,12 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
               // Create a new span for "before" part (if any)
               if (beforeText.length > 0) {
                 const beforeSpan = document.createElement("span");
-                beforeSpan.style.backgroundColor = parent.style.backgroundColor;
+                beforeSpan.style.setProperty(
+                  "background-color",
+                  parent.style.backgroundColor,
+                  "important"
+                );
+                beforeSpan.style.setProperty("color", "black", "important");
                 beforeSpan.textContent = beforeText;
                 beforeSpan.id = "helperExtension";
                 fragment.appendChild(beforeSpan);
@@ -201,7 +224,12 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
               // Create a new span for "after" part (if any)
               if (afterText.length > 0) {
                 const afterSpan = document.createElement("span");
-                afterSpan.style.backgroundColor = parent.style.backgroundColor;
+                afterSpan.style.setProperty(
+                  "background-color",
+                  parent.style.backgroundColor,
+                  "important"
+                );
+                afterSpan.style.setProperty("color", "black", "important");
                 afterSpan.textContent = afterText;
                 afterSpan.id = "helperExtension";
                 fragment.appendChild(afterSpan);

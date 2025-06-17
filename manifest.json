@@ -3,7 +3,7 @@
   "name": "Fontimize",
   "description": "An all-in-one tool used to enhance the online reading experience.",
   "version": "1.0",
-  "permissions": ["tabs", "storage", "contextMenus", "scripting"],
+  "permissions": ["activeTab", "storage", "contextMenus", "scripting"],
   "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"
